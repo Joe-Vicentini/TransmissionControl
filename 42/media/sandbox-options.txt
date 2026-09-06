@@ -1,3 +1,393 @@
 VERSION = 1,
-option UniqueModId.Option_Name_In_Underscore_Case { type = boolean, default = false, page = PageNameCamelCaseUsuallyTheSame, translation =UniqueModId_Option_Name_In_Underscore_Case , }
-option UniqueModId.Option_Name_In_Underscore_Case { type = integer, min = 0, max = 100, default = 7, page = PageNameCamelCaseUsuallyTheSame, translation =UniqueModId_Option_Name_In_Underscore_Case , }
+
+option TransmissionControl.ScratchChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchChance,
+}
+
+option TransmissionControl.LacerationChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationChance,
+}
+
+option TransmissionControl.BiteChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteChance,
+}
+
+option TransmissionControl.RespectVanillaTransmission
+{
+    type = boolean,
+    default = true,
+    page = TransmissionControl,
+    translation = TransmissionControl_RespectVanillaTransmission,
+}
+
+option TransmissionControl.AdvancedScratch
+{
+    type = boolean,
+    default = false,
+    page = TransmissionControl,
+    translation = TransmissionControl_AdvancedScratch,
+}
+
+option TransmissionControl.ScratchHeadChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchHeadChance,
+}
+
+option TransmissionControl.ScratchNeckChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchNeckChance,
+}
+
+option TransmissionControl.ScratchUpperTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchUpperTorsoChance,
+}
+
+option TransmissionControl.ScratchLowerTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchLowerTorsoChance,
+}
+
+option TransmissionControl.ScratchGroinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchGroinChance,
+}
+
+option TransmissionControl.ScratchUpperArmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchUpperArmChance,
+}
+
+option TransmissionControl.ScratchForearmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchForearmChance,
+}
+
+option TransmissionControl.ScratchHandChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchHandChance,
+}
+
+option TransmissionControl.ScratchThighChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchThighChance,
+}
+
+option TransmissionControl.ScratchShinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchShinChance,
+}
+
+option TransmissionControl.ScratchFootChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 7,
+    page = TransmissionControl,
+    translation = TransmissionControl_ScratchFootChance,
+}
+
+option TransmissionControl.AdvancedLaceration
+{
+    type = boolean,
+    default = false,
+    page = TransmissionControl,
+    translation = TransmissionControl_AdvancedLaceration,
+}
+
+option TransmissionControl.LacerationHeadChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationHeadChance,
+}
+
+option TransmissionControl.LacerationNeckChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationNeckChance,
+}
+
+option TransmissionControl.LacerationUpperTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationUpperTorsoChance,
+}
+
+option TransmissionControl.LacerationLowerTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationLowerTorsoChance,
+}
+
+option TransmissionControl.LacerationGroinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationGroinChance,
+}
+
+option TransmissionControl.LacerationUpperArmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationUpperArmChance,
+}
+
+option TransmissionControl.LacerationForearmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationForearmChance,
+}
+
+option TransmissionControl.LacerationHandChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationHandChance,
+}
+
+option TransmissionControl.LacerationThighChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationThighChance,
+}
+
+option TransmissionControl.LacerationShinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationShinChance,
+}
+
+option TransmissionControl.LacerationFootChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 25,
+    page = TransmissionControl,
+    translation = TransmissionControl_LacerationFootChance,
+}
+
+option TransmissionControl.AdvancedBite
+{
+    type = boolean,
+    default = false,
+    page = TransmissionControl,
+    translation = TransmissionControl_AdvancedBite,
+}
+
+option TransmissionControl.BiteHeadChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteHeadChance,
+}
+
+option TransmissionControl.BiteNeckChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteNeckChance,
+}
+
+option TransmissionControl.BiteUpperTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteUpperTorsoChance,
+}
+
+option TransmissionControl.BiteLowerTorsoChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteLowerTorsoChance,
+}
+
+option TransmissionControl.BiteGroinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteGroinChance,
+}
+
+option TransmissionControl.BiteUpperArmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteUpperArmChance,
+}
+
+option TransmissionControl.BiteForearmChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteForearmChance,
+}
+
+option TransmissionControl.BiteHandChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteHandChance,
+}
+
+option TransmissionControl.BiteThighChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteThighChance,
+}
+
+option TransmissionControl.BiteShinChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteShinChance,
+}
+
+option TransmissionControl.BiteFootChance
+{
+    type = integer,
+    min = 0,
+    max = 100,
+    default = 100,
+    page = TransmissionControl,
+    translation = TransmissionControl_BiteFootChance,
+}
