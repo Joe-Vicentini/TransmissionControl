@@ -1,0 +1,3 @@
+VERSION = 1,
+option UniqueModId.Option_Name_In_Underscore_Case { type = boolean, default = false, page = PageNameCamelCaseUsuallyTheSame, translation =UniqueModId_Option_Name_In_Underscore_Case , }
+option UniqueModId.Option_Name_In_Underscore_Case { type = integer, min = 0, max = 100, default = 7, page = PageNameCamelCaseUsuallyTheSame, translation =UniqueModId_Option_Name_In_Underscore_Case , }

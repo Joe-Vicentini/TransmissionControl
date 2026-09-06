@@ -1,0 +1,4 @@
+{
+  "TranslationKey1": "Tradução 1",
+  "TranslationKey2": "Tradução 2" 
+}
