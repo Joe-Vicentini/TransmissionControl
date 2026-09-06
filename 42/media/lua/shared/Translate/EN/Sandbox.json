@@ -9,9 +9,9 @@
   "Sandbox_TransmissionControl_BiteChance_tooltip": "Chance of contracting the Knox Virus from a zombie bite. Used unless Advanced Bite Chances is enabled.",
 
   "Sandbox_TransmissionControl_RespectVanillaTransmission": "Respect Vanilla Transmission Settings",
-  "Sandbox_TransmissionControl_RespectVanillaTransmission_tooltip": "When enabled, Transmission Control only applies infection chances to transmission routes permitted by the vanilla Knox Transmission setting (for example, Blood + Saliva or Saliva Only). When disabled, vanilla transmission-route restrictions are ignored and the configured chance is evaluated for the injury type.",
+  "Sandbox_TransmissionControl_RespectVanillaTransmission_tooltip": "When enabled, Transmission Control only applies infection chances to transmission routes permitted by the vanilla Knox Transmission setting (for example, Blood + Saliva or Saliva Only). When disabled, vanilla transmission-route restrictions are ignored and the configured chance is evaluated always.",
 
-  "Sandbox_TransmissionControl_AdvancedScratch": "Advanced Scratch Chances",
+  "Sandbox_TransmissionControl_AdvancedScratch": "--- Advanced Scratch Chances ---",
   "Sandbox_TransmissionControl_AdvancedScratch_tooltip": "Enable separate scratch transmission chances for each body part. When disabled, Scratch Transmission Chance is used for every body part.",
   "Sandbox_TransmissionControl_ScratchHeadChance": "Scratch - Head (%)",
   "Sandbox_TransmissionControl_ScratchNeckChance": "Scratch - Neck (%)",
@@ -25,7 +25,7 @@
   "Sandbox_TransmissionControl_ScratchShinChance": "Scratch - Shin (%)",
   "Sandbox_TransmissionControl_ScratchFootChance": "Scratch - Foot (%)",
 
-  "Sandbox_TransmissionControl_AdvancedLaceration": "Advanced Laceration Chances",
+  "Sandbox_TransmissionControl_AdvancedLaceration": "--- Advanced Laceration Chances ---",
   "Sandbox_TransmissionControl_AdvancedLaceration_tooltip": "Enable separate laceration transmission chances for each body part. When disabled, Laceration Transmission Chance is used for every body part.",
   "Sandbox_TransmissionControl_LacerationHeadChance": "Laceration - Head (%)",
   "Sandbox_TransmissionControl_LacerationNeckChance": "Laceration - Neck (%)",
@@ -39,7 +39,7 @@
   "Sandbox_TransmissionControl_LacerationShinChance": "Laceration - Shin (%)",
   "Sandbox_TransmissionControl_LacerationFootChance": "Laceration - Foot (%)",
 
-  "Sandbox_TransmissionControl_AdvancedBite": "Advanced Bite Chances",
+  "Sandbox_TransmissionControl_AdvancedBite": "--- Advanced Bite Chances ---",
   "Sandbox_TransmissionControl_AdvancedBite_tooltip": "Enable separate bite transmission chances for each body part. When disabled, Bite Transmission Chance is used for every body part.",
   "Sandbox_TransmissionControl_BiteHeadChance": "Bite - Head (%)",
   "Sandbox_TransmissionControl_BiteNeckChance": "Bite - Neck (%)",
