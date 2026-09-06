@@ -1,0 +1,36 @@
+plugins {
+    id 'java'
+}
+
+def zombieBuddyJar = findProperty('zombieBuddyJar') ?: System.getenv('ZOMBIE_BUDDY_JAR')
+def projectZomboidJar = findProperty('projectZomboidJar') ?: System.getenv('PROJECT_ZOMBOID_JAR')
+
+if (!zombieBuddyJar) {
+    throw new GradleException('Set -PzombieBuddyJar=<path> or ZOMBIE_BUDDY_JAR to ZombieBuddy.jar')
+}
+if (!projectZomboidJar) {
+    throw new GradleException('Set -PprojectZomboidJar=<path> or PROJECT_ZOMBOID_JAR to ProjectZomboid.jar')
+}
+
+dependencies {
+    compileOnly files(zombieBuddyJar)
+    compileOnly files(projectZomboidJar)
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src']
+        }
+    }
+}
+
+tasks.withType(JavaCompile).configureEach {
+    options.release = 17
+    options.compilerArgs += ['-parameters']
+}
+
+jar {
+    archiveFileName = 'TransmissionControl.jar'
+    destinationDirectory = file('../media/java')
+}
