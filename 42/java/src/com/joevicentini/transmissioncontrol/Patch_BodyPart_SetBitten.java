@@ -1,11 +1,9 @@
-package com.joevicentini.transmissioncontrol.patches;
+package com.joevicentini.transmissioncontrol;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
 
-import com.joevicentini.transmissioncontrol.TransmissionSettings;
 import com.joevicentini.transmissioncontrol.TransmissionSettings.InjuryType;
-import com.joevicentini.transmissioncontrol.ZombieDamageContext;
 import me.zed_0xff.zombie_buddy.Patch;
 import zombie.characters.BodyDamage.BodyPart;
 import zombie.core.random.Rand;

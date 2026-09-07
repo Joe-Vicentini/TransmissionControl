@@ -1,6 +1,5 @@
-package com.joevicentini.transmissioncontrol.patches;
+package com.joevicentini.transmissioncontrol;
 
-import com.joevicentini.transmissioncontrol.ZombieDamageContext;
 import me.zed_0xff.zombie_buddy.Patch;
 
 @Patch(
