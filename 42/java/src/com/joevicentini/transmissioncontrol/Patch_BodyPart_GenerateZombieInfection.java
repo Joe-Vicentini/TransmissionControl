@@ -18,27 +18,37 @@ public final class Patch_BodyPart_GenerateZombieInfection {
         @Patch.This BodyPart bodyPart,
         @Patch.Argument(value = 0, readOnly = false) int baseChance
     ) {
-        if (!ZombieDamageContext.isActive()) {
+        int configuredChance = configuredChance(bodyPart, baseChance);
+        if (configuredChance < 0) {
             return false;
         }
 
-        InjuryType injuryType = injuryTypeFromVanillaChance(baseChance);
-        if (injuryType == null) {
-            return false;
-        }
-
-        int configuredChance = TransmissionSettings.chance(injuryType, bodyPart.getType());
         baseChance = configuredChance;
-
         if (TransmissionSettings.respectVanillaTransmission()) {
             return false;
         }
 
+        rollConfiguredTransmission(bodyPart, configuredChance);
+        return true;
+    }
+
+    public static int configuredChance(BodyPart bodyPart, int baseChance) {
+        if (!ZombieDamageContext.isActive()) {
+            return -1;
+        }
+
+        InjuryType injuryType = injuryTypeFromVanillaChance(baseChance);
+        if (injuryType == null) {
+            return -1;
+        }
+
+        return TransmissionSettings.chance(injuryType, bodyPart.getType());
+    }
+
+    public static void rollConfiguredTransmission(BodyPart bodyPart, int configuredChance) {
         if (Rand.Next(100) < configuredChance) {
             applySuccessfulKnoxTransmission(bodyPart);
         }
-
-        return true;
     }
 
     private static void applySuccessfulKnoxTransmission(BodyPart bodyPart) {

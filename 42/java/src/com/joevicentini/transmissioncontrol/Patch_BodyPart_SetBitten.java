@@ -23,6 +23,18 @@ public final class Patch_BodyPart_SetBitten {
         @Patch.This BodyPart bodyPart,
         @Patch.AllArguments Object[] arguments
     ) {
+        handleEnter(bodyPart, arguments);
+    }
+
+    @Patch.OnExit(onThrowable = Throwable.class)
+    public static void exit(
+        @Patch.This BodyPart bodyPart,
+        @Patch.Thrown Throwable thrown
+    ) {
+        handleExit(bodyPart, thrown);
+    }
+
+    public static void handleEnter(BodyPart bodyPart, Object[] arguments) {
         boolean oneArgumentBite = arguments.length == 1
             && arguments[0] instanceof Boolean bitten
             && bitten;
@@ -34,11 +46,7 @@ public final class Patch_BodyPart_SetBitten {
         ));
     }
 
-    @Patch.OnExit(onThrowable = Throwable.class)
-    public static void exit(
-        @Patch.This BodyPart bodyPart,
-        @Patch.Thrown Throwable thrown
-    ) {
+    public static void handleExit(BodyPart bodyPart, Throwable thrown) {
         Deque<BiteState> states = STATES.get();
         if (states.isEmpty()) {
             return;
