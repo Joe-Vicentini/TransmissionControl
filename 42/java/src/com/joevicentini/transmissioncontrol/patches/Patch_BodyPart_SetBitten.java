@@ -6,7 +6,8 @@ import java.util.Deque;
 import com.joevicentini.transmissioncontrol.TransmissionSettings;
 import com.joevicentini.transmissioncontrol.TransmissionSettings.InjuryType;
 import com.joevicentini.transmissioncontrol.ZombieDamageContext;
-import me.zed_0xff.zombie_buddy.annotations.Patch;
+import me.zed_0xff.zombie_buddy.Patch;
+import zombie.characters.BodyDamage.BodyPart;
 import zombie.core.random.Rand;
 
 @Patch(
@@ -21,9 +22,8 @@ public final class Patch_BodyPart_SetBitten {
 
     @Patch.OnEnter
     public static void enter(
-        @Patch.AllArguments Object[] arguments,
-        @Patch.Field(value = "isInfected", readOnly = true) boolean isInfected,
-        @Patch.Field(value = "isFakeInfected", readOnly = true) boolean isFakeInfected
+        @Patch.This BodyPart bodyPart,
+        @Patch.AllArguments Object[] arguments
     ) {
         boolean oneArgumentBite = arguments.length == 1
             && arguments[0] instanceof Boolean bitten
@@ -31,17 +31,15 @@ public final class Patch_BodyPart_SetBitten {
 
         STATES.get().push(new BiteState(
             oneArgumentBite && ZombieDamageContext.isActive(),
-            isInfected,
-            isFakeInfected
+            bodyPart.IsInfected(),
+            bodyPart.IsFakeInfected()
         ));
     }
 
     @Patch.OnExit(onThrowable = Throwable.class)
     public static void exit(
-        @Patch.Thrown Throwable thrown,
-        @Patch.Field(value = "type", readOnly = true) Object bodyPartType,
-        @Patch.Field(value = "isInfected") boolean isInfected,
-        @Patch.Field(value = "isFakeInfected") boolean isFakeInfected
+        @Patch.This BodyPart bodyPart,
+        @Patch.Thrown Throwable thrown
     ) {
         Deque<BiteState> states = STATES.get();
         if (states.isEmpty()) {
@@ -62,18 +60,22 @@ public final class Patch_BodyPart_SetBitten {
             return;
         }
 
-        int configuredChance = TransmissionSettings.chance(InjuryType.BITE, bodyPartType);
+        int configuredChance = TransmissionSettings.chance(InjuryType.BITE, bodyPart.getType());
         if (Rand.Next(100) < configuredChance) {
-            if (TransmissionSettings.mortalityMode() == 7) {
-                isInfected = false;
-                isFakeInfected = true;
-            } else {
-                isInfected = true;
-                isFakeInfected = false;
-            }
+            applySuccessfulKnoxTransmission(bodyPart);
         } else {
-            isInfected = state.wasInfected;
-            isFakeInfected = state.wasFakeInfected;
+            bodyPart.SetInfected(state.wasInfected);
+            bodyPart.SetFakeInfected(state.wasFakeInfected);
+        }
+    }
+
+    private static void applySuccessfulKnoxTransmission(BodyPart bodyPart) {
+        if (TransmissionSettings.mortalityMode() == 7) {
+            bodyPart.SetInfected(false);
+            bodyPart.SetFakeInfected(true);
+        } else {
+            bodyPart.SetInfected(true);
+            bodyPart.SetFakeInfected(false);
         }
     }
 

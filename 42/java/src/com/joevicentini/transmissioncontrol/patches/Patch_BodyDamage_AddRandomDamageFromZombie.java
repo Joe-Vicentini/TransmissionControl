@@ -1,7 +1,7 @@
 package com.joevicentini.transmissioncontrol.patches;
 
 import com.joevicentini.transmissioncontrol.ZombieDamageContext;
-import me.zed_0xff.zombie_buddy.annotations.Patch;
+import me.zed_0xff.zombie_buddy.Patch;
 
 @Patch(
     className = "zombie.characters.BodyDamage.BodyDamage",

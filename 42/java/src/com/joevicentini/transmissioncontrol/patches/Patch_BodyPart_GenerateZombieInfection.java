@@ -3,7 +3,8 @@ package com.joevicentini.transmissioncontrol.patches;
 import com.joevicentini.transmissioncontrol.TransmissionSettings;
 import com.joevicentini.transmissioncontrol.TransmissionSettings.InjuryType;
 import com.joevicentini.transmissioncontrol.ZombieDamageContext;
-import me.zed_0xff.zombie_buddy.annotations.Patch;
+import me.zed_0xff.zombie_buddy.Patch;
+import zombie.characters.BodyDamage.BodyPart;
 import zombie.core.random.Rand;
 
 @Patch(
@@ -16,10 +17,8 @@ public final class Patch_BodyPart_GenerateZombieInfection {
 
     @Patch.OnEnter(skipOn = true)
     public static boolean enter(
-        @Patch.Argument(value = 0, readOnly = false) int baseChance,
-        @Patch.Field(value = "type", readOnly = true) Object bodyPartType,
-        @Patch.Field(value = "isInfected") boolean isInfected,
-        @Patch.Field(value = "isFakeInfected") boolean isFakeInfected
+        @Patch.This BodyPart bodyPart,
+        @Patch.Argument(value = 0, readOnly = false) int baseChance
     ) {
         if (!ZombieDamageContext.isActive()) {
             return false;
@@ -30,7 +29,7 @@ public final class Patch_BodyPart_GenerateZombieInfection {
             return false;
         }
 
-        int configuredChance = TransmissionSettings.chance(injuryType, bodyPartType);
+        int configuredChance = TransmissionSettings.chance(injuryType, bodyPart.getType());
         baseChance = configuredChance;
 
         if (TransmissionSettings.respectVanillaTransmission()) {
@@ -38,16 +37,20 @@ public final class Patch_BodyPart_GenerateZombieInfection {
         }
 
         if (Rand.Next(100) < configuredChance) {
-            if (TransmissionSettings.mortalityMode() == 7) {
-                isInfected = false;
-                isFakeInfected = true;
-            } else {
-                isInfected = true;
-                isFakeInfected = false;
-            }
+            applySuccessfulKnoxTransmission(bodyPart);
         }
 
         return true;
+    }
+
+    private static void applySuccessfulKnoxTransmission(BodyPart bodyPart) {
+        if (TransmissionSettings.mortalityMode() == 7) {
+            bodyPart.SetInfected(false);
+            bodyPart.SetFakeInfected(true);
+        } else {
+            bodyPart.SetInfected(true);
+            bodyPart.SetFakeInfected(false);
+        }
     }
 
     private static InjuryType injuryTypeFromVanillaChance(int baseChance) {

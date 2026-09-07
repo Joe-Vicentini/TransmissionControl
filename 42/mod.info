@@ -4,6 +4,7 @@ description=Configure the chance of contracting the Knox Virus from zombie bites
 poster=poster.png
 
 require=\ZombieBuddy
-ZBVersionMin=3.0.0-alpha
+ZBVersionMin=2.3.2
+ZBVersionMax=2.3.3
 javaJarFile=media/java/TransmissionControl.jar
 javaPkgName=com.joevicentini.transmissioncontrol
