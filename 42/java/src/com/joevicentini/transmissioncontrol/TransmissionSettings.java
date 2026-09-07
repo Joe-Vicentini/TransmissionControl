@@ -1,6 +1,7 @@
 package com.joevicentini.transmissioncontrol;
 
 import zombie.SandboxOptions;
+import zombie.characters.BodyDamage.BodyPartType;
 
 public final class TransmissionSettings {
     private static final String PREFIX = "TransmissionControl.";
@@ -34,7 +35,7 @@ public final class TransmissionSettings {
         return SandboxOptions.instance.lore.mortality.getValue();
     }
 
-    public static int chance(InjuryType injuryType, Object bodyPartType) {
+    public static int chance(InjuryType injuryType, BodyPartType bodyPartType) {
         int generalChance = integerOption(PREFIX + injuryType.optionName + "Chance", injuryType.fallbackChance);
         if (!booleanOption(PREFIX + "Advanced" + injuryType.optionName, false)) {
             return clampChance(generalChance);
@@ -71,23 +72,23 @@ public final class TransmissionSettings {
         return Math.max(0, Math.min(100, chance));
     }
 
-    private static String bodyPartOptionName(Object bodyPartType) {
-        if (!(bodyPartType instanceof Enum<?> bodyPart)) {
+    private static String bodyPartOptionName(BodyPartType bodyPartType) {
+        if (bodyPartType == null) {
             return null;
         }
 
-        return switch (bodyPart.name()) {
-            case "Head" -> "Head";
-            case "Neck" -> "Neck";
-            case "Torso_Upper" -> "UpperTorso";
-            case "Torso_Lower" -> "LowerTorso";
-            case "Groin" -> "Groin";
-            case "UpperArm_L", "UpperArm_R" -> "UpperArm";
-            case "ForeArm_L", "ForeArm_R" -> "Forearm";
-            case "Hand_L", "Hand_R" -> "Hand";
-            case "UpperLeg_L", "UpperLeg_R" -> "Thigh";
-            case "LowerLeg_L", "LowerLeg_R" -> "Shin";
-            case "Foot_L", "Foot_R" -> "Foot";
+        return switch (bodyPartType) {
+            case Head -> "Head";
+            case Neck -> "Neck";
+            case Torso_Upper -> "UpperTorso";
+            case Torso_Lower -> "LowerTorso";
+            case Groin -> "Groin";
+            case UpperArm_L, UpperArm_R -> "UpperArm";
+            case ForeArm_L, ForeArm_R -> "Forearm";
+            case Hand_L, Hand_R -> "Hand";
+            case UpperLeg_L, UpperLeg_R -> "Thigh";
+            case LowerLeg_L, LowerLeg_R -> "Shin";
+            case Foot_L, Foot_R -> "Foot";
             default -> null;
         };
     }
